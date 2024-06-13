@@ -93,16 +93,17 @@ else:
 # Additional context and user engagement
 with st.expander("Read More"):
     st.markdown("""
-        ## About This App
+        ## About This Website
         This brain tumor classification application leverages deep learning techniques to provide insights into MRI images of the brain. 
         It aims to demonstrate the capabilities of machine learning in the field of medical imaging. The model used here has been trained on a dataset of MRI images 
         and is designed to classify images into four categories: Glioma Tumor, Meningioma Tumor, No Tumor, and Pituitary Tumor.
 
         ## Usage Instructions
         - **Upload an Image**: Use the file uploader to select an MRI image in JPG, JPEG, or PNG format.
-        - **View Predictions**: Once the image is uploaded, the app will process it and display the predicted class along with the confidence levels for each category.
+        - **View Predictions**: Once the image is uploaded, the website will process it and display the predicted class along with the confidence levels for each category.
         - **Educational Purpose**: Please note that this tool is intended for educational and demonstration purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.
-
+        ## Recommendations
+        After obtaining the classification results, it is important to consult with a medical professional for a comprehensive analysis and further steps.
         ## Contact
         If you have any questions, suggestions, or feedback, feel free to reach out to the project maintainers at [admin123@gmail.com].
 
