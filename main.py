@@ -6,40 +6,36 @@ from PIL import Image
 
 # Define the preprocess_image function
 def preprocess_image(image):
-    # Open the uploaded image
-    img = Image.open(image)
-    
-    # Resize the image to 200x200 pixels
-    img_resized = img.resize((200, 200))
-    
-    # Convert the image to a numpy array
-    img_array = np.array(img_resized) / 255.0  # Normalize pixel values
-    
-    # Reshape the array to match the model's input shape
-    img_array = np.expand_dims(img_array, axis=0)
-    
-    return img_array
+    img = Image.open(image).resize((200, 200))
+    img_array = np.array(img) / 255.0  # Normalize pixel values
+    return np.expand_dims(img_array, axis=0)
 
 # Load the trained model
 @st.cache_resource
 def load_trained_model():
-    return load_model('model.h5') 
+    return load_model('model.h5')
 
 model = load_trained_model()
 
-# Define the tumor classes
+# Define the tumor classes and their descriptions
 tumor_classes = ['Glioma Tumor', 'Meningioma Tumor', 'No Tumor', 'Pituitary Tumor']
+tumor_descriptions = {
+    'Glioma Tumor': 'Gliomas are tumors that originate in the glial cells of the brain or spine. They vary in aggressiveness and can cause headaches, seizures, and memory loss.',
+    'Meningioma Tumor': 'Meningiomas are usually benign tumors that develop from the meninges. They can cause headaches, vision problems, and seizures due to their size or location.',
+    'No Tumor': 'No signs of a brain tumor are detected in the MRI image. The brain appears normal, but further medical evaluation may be necessary.',
+    'Pituitary Tumor': 'Pituitary tumors develop in the pituitary gland and can affect hormone production, leading to symptoms like vision problems, headaches, and hormonal imbalances.'
+}
 
 # Custom CSS for background
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #F5F5DC; /* beige */
-        color: #000000; /* white text color */
+        background-color: #F5F5DC; /* Beige background */
+        color: #000000; /* Black text */
     }
     .css-1aumxhk {
-        background-color: #000000 !important; /* white background for header */
+        background-color: #000000 !important; /* Black header */
     }
     </style>
     """,
@@ -59,41 +55,30 @@ st.write("""
 # File uploader widget
 uploaded_file = st.file_uploader("Choose an MRI image...", type=["jpg", "jpeg", "png"])
 
-if uploaded_file is not None:
-    # Display a spinner while processing the image
+if uploaded_file:
     with st.spinner('Processing...'):
-        # Preprocess the image
         image = preprocess_image(uploaded_file)
-        
-        # Make prediction
         prediction = model.predict(image)
         predicted_class = np.argmax(prediction)
-        
-        # Display the uploaded image
+        predicted_class_name = tumor_classes[predicted_class]
+
         st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
-        
-        # Display the image name
-        image_name = uploaded_file.name
-        st.write(f"**Image Name:** {image_name}")
-        
-        # Display prediction and confidence
-        st.write(f"**Predicted Class:** {tumor_classes[predicted_class]}")
+        st.write(f"**Image Name:** {uploaded_file.name}")
+        st.write(f"**Predicted Class:** {predicted_class_name}")
         st.write(f"**Confidence:** {prediction[0][predicted_class]:.4f}")
 
-        # Display confidence for all classes
         st.write("### Prediction Confidence for All Classes:")
-        confidence_data = {
-            "Class": tumor_classes,
-            "Confidence": [f"{conf:.4f}" for conf in prediction[0]]
-        }
+        confidence_data = {"Class": tumor_classes, "Confidence": [f"{conf:.4f}" for conf in prediction[0]]}
         st.table(confidence_data)
+
+        st.write(f"### Description of Predicted Class: {predicted_class_name}")
+        st.write(tumor_descriptions[predicted_class_name])
         
         st.success('Classification completed!')
-
 else:
     st.write("Please upload an MRI image file to get a classification.")
 
-# Define the outro for additional context and user engagement
+# Additional context and user engagement
 with st.expander("Read More"):
     st.markdown("""
         ## About This App
