@@ -15,8 +15,7 @@ Visualization: The uploaded image is displayed, and prediction confidence for al
 Interactive UI: The app features an interactive UI with custom styling and an expandable section for additional information.
 
 
-Installation
-Prerequisites
+Installation Prerequisites:
 Python 3.x
 Streamlit
 TensorFlow
