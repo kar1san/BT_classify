@@ -104,7 +104,7 @@ with st.expander("Read More"):
         - **Educational Purpose**: Please note that this tool is intended for educational and demonstration purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.
         ## Recommendations
         After obtaining the classification results, it is important to consult with a medical professional for a comprehensive analysis and further steps.
-        ## Contact 📮
+        ## Contact 📨
         If you have any questions, suggestions, or feedback, feel free to reach out to the project maintainers at [admin123@gmail.com].
 
         Thank you for using our Brain Tumor Classification website!
