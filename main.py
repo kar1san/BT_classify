@@ -23,7 +23,7 @@ def preprocess_image(image):
 # Load the trained model
 @st.cache_resource
 def load_trained_model():
-    return load_model('model.h5')  # Replace 'model.h5' with the path to your saved model
+    return load_model('model.h5') 
 
 model = load_trained_model()
 
@@ -107,7 +107,7 @@ with st.expander("Read More"):
         - **Educational Purpose**: Please note that this tool is intended for educational and demonstration purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.
 
         ## Contact
-        If you have any questions, suggestions, or feedback, feel free to reach out to the project maintainers at [yourname@gmail.com].
+        If you have any questions, suggestions, or feedback, feel free to reach out to the project maintainers at [admin123@gmail.com].
 
-        Thank you for using our Brain Tumor Classification App!
+        Thank you for using our Brain Tumor Classification website!
     """)
