@@ -31,11 +31,23 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-color: #F5F5DC; /* Beige background */
-        color: #000000; /* Black text */
+        background-color: #F0F2F6; /* Light grey background */
+        color: #333333; /* Dark grey text */
+        font-family: 'Arial', sans-serif; /* Font style */
     }
-    .css-1aumxhk {
-        background-color: #000000 !important; /* Black header */
+    .css-18ni7ap {
+        background-color: #4B8BBE; /* Blue header */
+        color: #FFFFFF; /* White text */
+    }
+    .stButton>button {
+        background-color: #4B8BBE; /* Blue button */
+        color: white;
+    }
+    .stMarkdown {
+        margin-bottom: 30px;
+    }
+    .prediction-table {
+        margin-top: 20px;
     }
     </style>
     """,
@@ -43,7 +55,7 @@ st.markdown(
 )
 
 # Define the UI
-st.title('Brain Tumor Classification')
+st.title('🧠 Brain Tumor Classification')
 st.write("""
     **Upload an MRI image of a brain, and the model will classify it into one of the following categories:**
     - Glioma Tumor
@@ -67,7 +79,7 @@ if uploaded_file:
         st.write(f"**Predicted Class:** {predicted_class_name}")
         st.write(f"**Confidence:** {prediction[0][predicted_class]:.4f}")
 
-        st.write("### Prediction Confidence for All Classes:")
+        st.write("### Prediction Confidence for All Classes:", unsafe_allow_html=True)
         confidence_data = {"Class": tumor_classes, "Confidence": [f"{conf:.4f}" for conf in prediction[0]]}
         st.table(confidence_data)
 
