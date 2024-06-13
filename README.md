@@ -5,9 +5,13 @@ The Brain Tumor Classification App is a web application built using Streamlit an
 
 Features
 Image Upload: Users can upload MRI images in JPG, JPEG, or PNG format.
+
 Image Preprocessing: Uploaded images are resized and normalized before being fed into the model.
+
 Prediction: The app displays the predicted class along with the confidence level.
+
 Visualization: The uploaded image is displayed, and prediction confidence for all classes is shown in a table format.
+
 Interactive UI: The app features an interactive UI with custom styling and an expandable section for additional information.
 
 
