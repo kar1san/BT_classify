@@ -93,7 +93,7 @@ else:
 # Additional context and user engagement
 with st.expander("Read More"):
     st.markdown("""
-        ## About This Website
+        ## About This Website 🌐
         This brain tumor classification application leverages deep learning techniques to provide insights into MRI images of the brain. 
         It aims to demonstrate the capabilities of machine learning in the field of medical imaging. The model used here has been trained on a dataset of MRI images 
         and is designed to classify images into four categories: Glioma Tumor, Meningioma Tumor, No Tumor, and Pituitary Tumor.
@@ -104,7 +104,7 @@ with st.expander("Read More"):
         - **Educational Purpose**: Please note that this tool is intended for educational and demonstration purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.
         ## Recommendations
         After obtaining the classification results, it is important to consult with a medical professional for a comprehensive analysis and further steps.
-        ## Contact
+        ## Contact 📮
         If you have any questions, suggestions, or feedback, feel free to reach out to the project maintainers at [admin123@gmail.com].
 
         Thank you for using our Brain Tumor Classification website!
